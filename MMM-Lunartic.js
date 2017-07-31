@@ -8,13 +8,13 @@ Module.register("MMM-Lunartic", {
 
     // Module config defaults.
     defaults: {
-        useHeader: false, // False if you don't want a header      
+        useHeader: false, // true if you want a header      
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
         animationSpeed: 3000,
         initialLoadDelay: 4250,
         retryDelay: 2500,
-        updateInterval: 30 * 1000, // 30 seconds
+        updateInterval: 60 * 1000, // 1 minute
 
     },
 
