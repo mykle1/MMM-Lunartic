@@ -1,0 +1,54 @@
+/* Copy and paste any or all of these css entries into your custom.css file inside your
+ * css folder. The functions are annotated to make things as easy as possible for you.
+ * Use any colors you want! Go to - "http://htmlcolorcodes.com/color-picker/"
+ * Pick your color, copy and paste the HEX number. Example - #62FF00 = bright green.
+ */
+
+.MMM-Lunartic .header {
+  color: white;               /* Header color. Default is white. */
+  text-align: left;            /* Algin header text  */
+}
+
+.MMM-Lunartic .photo {            
+  width: 75%;                /* adjust size of moon picture */
+  margin-left: 20px;         /* Precisely align moon picture with these */
+  margin-right: 0px;
+  margin-top: -31px;
+  margin-bottom: -21px;
+  float: center;
+}
+
+.MMM-Lunartic .age {
+  color: white;               /* Age color. Default is white. */
+  text-align: left;            /* Algin age text  */
+}
+
+.MMM-Lunartic .illumination {
+  color: white;               /* illumination color. Default is white. */
+  text-align: left;            /* Align illumination text  */
+}
+
+.MMM-Lunartic .stage {
+  color: white;               /* stage color. Default is white. */
+  text-align: left;            /* Align stage text  */
+}
+
+.MMM-Lunartic .DFCOE {
+  color: white;               /* DFCOE color. Default is white. */
+  text-align: left;            /* Align DFCOE text  */
+}
+
+.MMM-Lunartic .DFS {
+  color: white;               /* DFS color. Default is white. */
+  text-align: left;            /* Align DFS text  */
+}
+
+.MMM-Lunartic .nextFullMoon {
+  color: white;               /* nextFullMoon color. Default is white. */
+  text-align: left;            /* Align nextFullMoon text  */
+}
+
+.MMM-Lunartic .nextNewMoon {
+  color: white;               /* nextNewMoon color. Default is white. */
+  text-align: left;            /* Align nextNewMoon text  */
+}
