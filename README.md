@@ -39,10 +39,10 @@ Then you are offered updated information every minute, such as:
         module: 'MMM-Lunartic',
         position: 'top_left',                       // Best in left or right regions
         config: { 
-		    useHeader: false,                       // true if you want a header
-            header: "The Lunartic is in my head",   // Any text you want
-		    maxWidth: "300px",
-		    animationSpeed: 3000,                   // updated info fades in and out
+		useHeader: false,                       // true if you want a header
+		header: "The Lunartic is in my head",   // Any text you want
+		maxWidth: "300px",
+		animationSpeed: 3000,                   // updated info fades in and out
         }
     },
 	
