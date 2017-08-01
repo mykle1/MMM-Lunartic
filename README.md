@@ -8,13 +8,13 @@ First, a rather impressive animation of the night moon, with clouds rolling by.
 
 Then you are offered updated information every minute, such as:
 
+* The distance of the moon from the Earth's core at this moment. (Ever changing)
+* This distance of the moon to the sun at this moment. (Ever changing)
+* The date of the next full moon. (Very important if you're a werewolf!)
+* The date of the next new moon. (Also very important if you're a werewolf!)
 * The age of the current moon's phase. 
 * How much of the moon is illuminated at this moment.
 * The stage of the present moon (waning, waxing, etc..) 
-* The distance of the moon from the Earth's core at this moment.
-* This distance of the moon to the sun at this moment.
-* The next full moon, date and time. (Very important if you're a werewolf!)
-* The next new moon, date and time. (Also very important if you're a werewolf!)
 
 ## Examples
 
