@@ -22,7 +22,7 @@ Then you are offered updated information every minute, such as:
 
 ![](pix/moon.gif)
 
-![](pix/1.jpg)
+![](pix/1.JPG)
 
 * Annotated .css file included for aligning and coloring text and header.
 
@@ -39,6 +39,7 @@ Then you are offered updated information every minute, such as:
         module: 'MMM-Lunartic',
         position: 'top_left',                       // Best in left or right regions
         config: { 
+		distance: "miles",                      // miles or km
 		useHeader: false,                       // true if you want a header
 		header: "The Lunartic is in my head",   // Any text you want
 		maxWidth: "300px",
