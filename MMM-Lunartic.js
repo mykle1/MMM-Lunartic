@@ -8,9 +8,10 @@ Module.register("MMM-Lunartic", {
 
     // Module config defaults.
     defaults: {
-        useHeader: false, // true if you want a header      
+        useHeader: false,                     // true if you want a header      
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
+		distance: "miles",                    // miles or km
         animationSpeed: 3000,
         initialLoadDelay: 4250,
         retryDelay: 2500,
@@ -21,6 +22,10 @@ Module.register("MMM-Lunartic", {
     getStyles: function() {
         return ["MMM-Lunartic.css"];
     },
+	
+	getScripts: function() {
+		return ["moment.js"];
+	},
 
     start: function() {
         Log.info("Starting module: " + this.name);
@@ -52,69 +57,80 @@ Module.register("MMM-Lunartic", {
             wrapper.appendChild(header);
         }
 
-        var Lunartic = this.Lunartic;
+			var Lunartic = this.Lunartic;
+			var distance = this.config.distance;  // miles or km
 
-        var top = document.createElement("div");
-        top.classList.add("list-row");
-
-
-        // moon gif
-        var pic = document.createElement("div");
-        var img = document.createElement("img");
-        img.classList.add("photo");
-        img.src = "modules/MMM-Lunartic/pix/moon.gif";
-        pic.appendChild(img);
-        wrapper.appendChild(pic);
+			var top = document.createElement("div");
+			top.classList.add("list-row");
 
 
-        // how old the new moon is
-        var age = document.createElement("div");
-        age.classList.add("xsmall", "bright", "age");
-        age.innerHTML = "This month's moon is " + Math.round(Lunartic.age) + " days old";
-        wrapper.appendChild(age);
+			// moon animation
+			var pic = document.createElement("div");
+			var img = document.createElement("img");
+			img.classList.add("photo");
+			img.src = "modules/MMM-Lunartic/pix/moon.gif";
+			pic.appendChild(img);
+			wrapper.appendChild(pic);
+		
+		
+			// distance from Earth's core
+			var DFCOE = document.createElement("div");
+			DFCOE.classList.add("xsmall", "bright", "DFCOE");
+		if (this.config.distance == "miles"){
+			DFCOE.innerHTML = "Distance from Earth's core = " + (Math.round(Lunartic.DFCOE * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
+		} else {
+			DFCOE.innerHTML = "Distance from Earth's core = " + (Math.round(Lunartic.DFCOE) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " km";
+		}
+			wrapper.appendChild(DFCOE);
+		
+		
+			// distance from the sun
+			var DFS = document.createElement("div");
+			DFS.classList.add("xsmall", "bright", "DFS");
+		if (this.config.distance == "miles"){
+			DFS.innerHTML = "Distance from sun = " + (Math.round(Lunartic.DFS * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
+		} else {
+			DFS.innerHTML = "Distance from sun = " + (Math.round(Lunartic.DFS) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " km";
+		}  
+			wrapper.appendChild(DFS);
+		
+		
+			// Next full moon date
+			var nextFullMoon = document.createElement("div");
+			var dateTimeString = moment.unix(Lunartic.FM.UT).format("MMM DD, YYYY");
+			nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
+			//	console.log (Lunartic); // checking data
+			nextFullMoon.innerHTML = "The next full moon is " + dateTimeString;
+			wrapper.appendChild(nextFullMoon);
 
 
-        // how much of the moon is illuminated
-        var illumination = document.createElement("div");
-        illumination.classList.add("xsmall", "bright", "illumination");
-        illumination.innerHTML = " The moon is " + Math.round(Lunartic.illumination) + "% illuminated";
-        wrapper.appendChild(illumination);
+			// Next new moon date
+			var nextNewMoon = document.createElement("div");
+			var dateTimeString = moment.unix(Lunartic.NNM.UT).format("MMM DD, YYYY");
+			nextNewMoon.classList.add("xsmall", "bright", "nextNewMoon");
+			nextNewMoon.innerHTML = "The next new moon is " + dateTimeString;
+			wrapper.appendChild(nextNewMoon);
+
+        
+			// how old the current moon is
+			var age = document.createElement("div");
+			age.classList.add("xsmall", "bright", "age");
+			age.innerHTML = "The current moon is " + Math.round(Lunartic.age) + " days old";
+			wrapper.appendChild(age);
 
 
-        // waxing, waning, etc..
-        var stage = document.createElement("div");
-        stage.classList.add("xsmall", "bright", "stage");
-        stage.innerHTML = "The moon is " + Lunartic.stage;
-        wrapper.appendChild(stage);
+			// how much of the moon is illuminated
+			var illumination = document.createElement("div");
+			illumination.classList.add("xsmall", "bright", "illumination");
+			illumination.innerHTML = " The moon is " + Math.round(Lunartic.illumination) + "% illuminated";
+			wrapper.appendChild(illumination);
 
 
-        // distance from Earth's core
-        var DFCOE = document.createElement("div");
-        DFCOE.classList.add("xsmall", "bright", "DFCOE");
-        DFCOE.innerHTML = "Distance from Earth's core = " + (Math.round(Lunartic.DFCOE * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
-        wrapper.appendChild(DFCOE);
-
-
-        // distance from the sun
-        var DFS = document.createElement("div");
-        DFS.classList.add("xsmall", "bright", "DFS");
-        DFS.innerHTML = "Distance from sun = " + (Math.round(Lunartic.DFS * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
-        wrapper.appendChild(DFS);
-
-
-        // Next full moon date and time
-        var nextFullMoon = document.createElement("div");
-        nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
-        //	console.log (Lunartic); // checking data
-        nextFullMoon.innerHTML = "The next full moon is " + Lunartic.FM.DT;
-        wrapper.appendChild(nextFullMoon);
-
-
-        // Next new moon date and time
-        var nextNewMoon = document.createElement("div");
-        nextNewMoon.classList.add("xsmall", "bright", "nextNewMoon");
-        nextNewMoon.innerHTML = "The next new moon is " + Lunartic.NNM.DT;
-        wrapper.appendChild(nextNewMoon);
+			// waxing, waning, etc..
+			var stage = document.createElement("div");
+			stage.classList.add("xsmall", "bright", "stage");
+			stage.innerHTML = "The moon is " + Lunartic.stage;
+			wrapper.appendChild(stage);
 
         return wrapper;
     },
