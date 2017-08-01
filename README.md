@@ -22,7 +22,7 @@ Then you are offered updated information every minute, such as:
 
 ![](pix/moon.gif)
 
-![](pix/1.JPG)
+![](pix/11.JPG)
 
 * Annotated .css file included for aligning and coloring text and header.
 
