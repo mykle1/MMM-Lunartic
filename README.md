@@ -18,11 +18,15 @@ Then you are offered updated information every minute, such as:
 
 ## Examples
 
+The moon will be animated. See picture below.
+
+![](pix/33.JPG)
+
 * The animation can be hidden if only the information is wanted.
 
-![](pix/moon.gif)
+![](pix/moon.gif) * This can be hidden
 
-![](pix/11.JPG)
+![](pix/11.JPG) * To show only this
 
 * Annotated .css file included for aligning and coloring text and header.
 
