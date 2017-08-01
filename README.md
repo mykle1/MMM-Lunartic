@@ -20,7 +20,8 @@ Then you are offered updated information every minute, such as:
 
 * The animation can be hidden if only the information is wanted.
 
-![](pix/moon.gif), 
+![](pix/moon.gif)
+[comment]: <> (This is a comment, it will not be included)
 ![](pix/11.JPG)
 
 * Annotated .css file included for aligning and coloring text and header.
