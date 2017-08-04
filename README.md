@@ -43,6 +43,7 @@ The moon will be animated. See picture below.
         module: 'MMM-Lunartic',
         position: 'top_left',                       // Best in left or right regions
         config: { 
+		image: "animation"                      // animation or static (picture)
 		distance: "miles",                      // miles or km
 		useHeader: false,                       // true if you want a header
 		header: "The Lunartic is in my head",   // Any text you want
