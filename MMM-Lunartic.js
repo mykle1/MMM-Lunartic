@@ -8,6 +8,7 @@ Module.register("MMM-Lunartic", {
 
     // Module config defaults.
     defaults: {
+		image: "animation", // animation or static (picture)
         useHeader: false, // true if you want a header      
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
@@ -59,18 +60,25 @@ Module.register("MMM-Lunartic", {
 
         var Lunartic = this.Lunartic;
         var distance = this.config.distance; // miles or km
+		var image = this.config.image;       // animation or static
 
         var top = document.createElement("div");
         top.classList.add("list-row");
 
 
-        // moon animation
-        var pic = document.createElement("div");
-        var img = document.createElement("img");
-        img.classList.add("photo");
-        img.src = "modules/MMM-Lunartic/pix/moon.gif";
-        pic.appendChild(img);
-        wrapper.appendChild(pic);
+			// moon animation
+			var pic = document.createElement("div");
+			var img = document.createElement("img");
+			img.classList.add("photo");
+		if (this.config.image == "animation") {
+			img.src = "modules/MMM-Lunartic/pix/moon.gif";
+			pic.appendChild(img);
+			wrapper.appendChild(pic);
+		} else {
+			img.src = "modules/MMM-Lunartic/pix/static.jpg";
+			pic.appendChild(img);
+			wrapper.appendChild(pic);
+		}
 
 
         // distance from Earth's core
