@@ -5,7 +5,16 @@
 "The next new moon is ": "La prochaine nouvelle lune est ",
 "The current moon is ": "La lune actuelle a ",
 "The moon is ": "La lune a ",
-" illuminated": " illuminé",
+"% illuminated": "% illuminé",
 " days old": " jours",
-"When the Moon hits your eye . . .": "Quand la lune frappe votre œil. . ."
+"When the Moon hits your eye . . .": "Quand la lune frappe votre œil. . .",
+"waxing": "fartage",
+"waxing gibbous":"Glacier",
+"full": "plein",
+"wanning gibbous":"lune gibbeuse décroissante",
+"third quarter": "troisième quart",
+"waning crescent":"Croissant décroissant",
+"new": "Nouveau",
+"waxing crescent":"Croissant de cire",
+"first quarter":"premier quart"
 }
