@@ -132,7 +132,7 @@ Module.register("MMM-Lunartic", {
         // how old the current moon is
         var age = document.createElement("div");
         age.classList.add("xsmall", "bright", "age");
-        age.innerHTML = this.translate("The current moon is ") + Math.round(Lunartic.age) + " days old";
+        age.innerHTML = this.translate("The current moon is ") + Math.round(Lunartic.age) + this.translate(" days old");
         wrapper.appendChild(age);
 
 
@@ -146,7 +146,7 @@ Module.register("MMM-Lunartic", {
         // waxing, waning, etc..
         var stage = document.createElement("div");
         stage.classList.add("xsmall", "bright", "stage");
-        stage.innerHTML = this.translate("The moon is ") + Lunartic.stage;
+        stage.innerHTML = this.translate("The moon is ") + this.translate(Lunartic.stage);
         wrapper.appendChild(stage);
 
         return wrapper;
