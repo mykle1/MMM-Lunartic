@@ -27,6 +27,14 @@ Module.register("MMM-Lunartic", {
     getScripts: function() {
         return ["moment.js"];
     },
+    
+    getTranslations: function() {
+        return {
+            en: "translations/en.json"
+        };
+    },
+    
+    
 
     start: function() {
         Log.info("Starting module: " + this.name);
@@ -46,7 +54,7 @@ Module.register("MMM-Lunartic", {
         wrapper.style.maxWidth = this.config.maxWidth;
 
         if (!this.loaded) {
-            wrapper.innerHTML = "When the Moon hits your eye . . .";
+            wrapper.innerHTML = this.translate("When the Moon hits your eye . . .");
             wrapper.classList.add("bright", "light", "small");
             return wrapper;
         }
@@ -85,9 +93,9 @@ Module.register("MMM-Lunartic", {
         var DFCOE = document.createElement("div");
         DFCOE.classList.add("xsmall", "bright", "DFCOE");
         if (this.config.distance == "miles") {
-            DFCOE.innerHTML = "Distance from Earth's core = " + (Math.round(Lunartic.DFCOE * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
+            DFCOE.innerHTML = this.translate("Distance from Earth's core = ") + (Math.round(Lunartic.DFCOE * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
         } else {
-            DFCOE.innerHTML = "Distance from Earth's core = " + (Math.round(Lunartic.DFCOE) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " km";
+            DFCOE.innerHTML = this.translate("Distance from Earth's core = ") + (Math.round(Lunartic.DFCOE) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " km";
         }
         wrapper.appendChild(DFCOE);
 
@@ -96,9 +104,9 @@ Module.register("MMM-Lunartic", {
         var DFS = document.createElement("div");
         DFS.classList.add("xsmall", "bright", "DFS");
         if (this.config.distance == "miles") {
-            DFS.innerHTML = "Distance from sun = " + (Math.round(Lunartic.DFS * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
+            DFS.innerHTML = this.translate("Distance from sun = ") + (Math.round(Lunartic.DFS * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
         } else {
-            DFS.innerHTML = "Distance from sun = " + (Math.round(Lunartic.DFS) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " km";
+            DFS.innerHTML = this.translate("Distance from sun = ") + (Math.round(Lunartic.DFS) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " km";
         }
         wrapper.appendChild(DFS);
 
@@ -108,7 +116,7 @@ Module.register("MMM-Lunartic", {
         var dateTimeString = moment.unix(Lunartic.FM.UT).format("MMM DD, YYYY");
         nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
         //	console.log (Lunartic); // checking data
-        nextFullMoon.innerHTML = "The next full moon is " + dateTimeString;
+        nextFullMoon.innerHTML = this.translate("The next full moon is ") + dateTimeString;
         wrapper.appendChild(nextFullMoon);
 
 
@@ -116,28 +124,28 @@ Module.register("MMM-Lunartic", {
         var nextNewMoon = document.createElement("div");
         var dateTimeString = moment.unix(Lunartic.NNM.UT).format("MMM DD, YYYY");
         nextNewMoon.classList.add("xsmall", "bright", "nextNewMoon");
-        nextNewMoon.innerHTML = "The next new moon is " + dateTimeString;
+        nextNewMoon.innerHTML = this.translate("The next new moon is ") + dateTimeString;
         wrapper.appendChild(nextNewMoon);
 
 
         // how old the current moon is
         var age = document.createElement("div");
         age.classList.add("xsmall", "bright", "age");
-        age.innerHTML = "The current moon is " + Math.round(Lunartic.age) + " days old";
+        age.innerHTML = this.translate("The current moon is ") + Math.round(Lunartic.age) + " days old";
         wrapper.appendChild(age);
 
 
         // how much of the moon is illuminated
         var illumination = document.createElement("div");
         illumination.classList.add("xsmall", "bright", "illumination");
-        illumination.innerHTML = " The moon is " + Math.round(Lunartic.illumination) + "% illuminated";
+        illumination.innerHTML = this.translate(" The moon is ") + Math.round(Lunartic.illumination) + this.translate("% illuminated");
         wrapper.appendChild(illumination);
 
 
         // waxing, waning, etc..
         var stage = document.createElement("div");
         stage.classList.add("xsmall", "bright", "stage");
-        stage.innerHTML = "The moon is " + Lunartic.stage;
+        stage.innerHTML = this.translate("The moon is ") + Lunartic.stage;
         wrapper.appendChild(stage);
 
         return wrapper;
