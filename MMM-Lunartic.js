@@ -8,7 +8,7 @@ Module.register("MMM-Lunartic", {
 
     // Module config defaults.
     defaults: {
-		image: "animation", // animation or static (picture)
+	image: "animation", // animation or static (picture)
         useHeader: false, // true if you want a header      
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
@@ -30,7 +30,8 @@ Module.register("MMM-Lunartic", {
     
     getTranslations: function() {
         return {
-            en: "translations/en.json"
+            en: "translations/en.json",
+            fr: "translations/fr.json"
         };
     },
     
@@ -41,8 +42,8 @@ Module.register("MMM-Lunartic", {
 
         requiresVersion: "2.1.0",
 
-            //  Set locale.
-            this.url = "http://api.burningsoul.in/moon";
+        //  Set locale.
+        this.url = "http://api.burningsoul.in/moon";
         this.Lunartic = {};
         this.scheduleUpdate();
     },
@@ -68,30 +69,30 @@ Module.register("MMM-Lunartic", {
 
         var Lunartic = this.Lunartic;
         var distance = this.config.distance; // miles or km
-		var image = this.config.image;       // animation or static
+	var image = this.config.image;       // animation or static
 
         var top = document.createElement("div");
         top.classList.add("list-row");
 
 
-			// moon animation
-			var pic = document.createElement("div");
-			var img = document.createElement("img");
-			img.classList.add("photo");
-		if (this.config.image == "animation") {
-			img.src = "modules/MMM-Lunartic/pix/moon.gif";
-			pic.appendChild(img);
-			wrapper.appendChild(pic);
-		} else {
-			img.src = "modules/MMM-Lunartic/pix/static.jpg";
-			pic.appendChild(img);
-			wrapper.appendChild(pic);
-		}
+		// moon animation
+		var pic = document.createElement("div");
+		var img = document.createElement("img");
+		img.classList.add("photo");
+	if (this.config.image == "animation") {
+		img.src = "modules/MMM-Lunartic/pix/moon.gif";
+		pic.appendChild(img);
+		wrapper.appendChild(pic);
+	} else {
+		img.src = "modules/MMM-Lunartic/pix/static.jpg";
+		pic.appendChild(img);
+		wrapper.appendChild(pic);
+	}
 
 
-        // distance from Earth's core
-        var DFCOE = document.createElement("div");
-        DFCOE.classList.add("xsmall", "bright", "DFCOE");
+            // distance from Earth's core
+            var DFCOE = document.createElement("div");
+            DFCOE.classList.add("xsmall", "bright", "DFCOE");
         if (this.config.distance == "miles") {
             DFCOE.innerHTML = this.translate("Distance from Earth's core = ") + (Math.round(Lunartic.DFCOE * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
         } else {
@@ -100,9 +101,9 @@ Module.register("MMM-Lunartic", {
         wrapper.appendChild(DFCOE);
 
 
-        // distance from the sun
-        var DFS = document.createElement("div");
-        DFS.classList.add("xsmall", "bright", "DFS");
+            // distance from the sun
+            var DFS = document.createElement("div");
+            DFS.classList.add("xsmall", "bright", "DFS");
         if (this.config.distance == "miles") {
             DFS.innerHTML = this.translate("Distance from sun = ") + (Math.round(Lunartic.DFS * 0.62137) + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " miles";
         } else {
