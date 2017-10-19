@@ -4,16 +4,20 @@ Up to the minute information about our Lunar partner, with a splash of EyeCandy,
 
 ## How it works
 
-First, a rather impressive animation of the night moon, with clouds rolling by.
+First, you have three choices of images to accompany the data.
+
+* A rather impressive animation of the night moon, with clouds rolling by
+* Updating minutely, an image of the actual appearance of the current moon
+* A static image of all the phases of the moon
 
 Then you are offered updated information every minute, such as:
 
-* The distance of the moon from the Earth's core at this moment. (Ever changing)
-* This distance of the moon to the sun at this moment. (Ever changing)
+* The distance of the moon from the Earth's core at this moment. (Changes minutely)
+* This distance of the moon to the sun at this moment. (Changes minutely)
 * The date of the next full moon. (Very important if you're a werewolf!)
 * The date of the next new moon. (Also very important if you're a werewolf!)
-* The age of the current moon's phase. 
-* How much of the moon is illuminated at this moment.
+* The age of the current moon's monthly phase. 
+* Percentage of the current moon that is illuminated.
 * The stage of the present moon (waning, waxing, etc..) 
 
 ## Examples
@@ -28,6 +32,8 @@ The moon will be animated. See picture below.
 
 ![](pix/11.JPG) * To show only this
 
+* Or, Updating minutely, an image of the actual appearance of the current moon
+
 * Annotated .css file included for aligning and coloring text and header.
 
 ## Installation
@@ -41,9 +47,9 @@ The moon will be animated. See picture below.
 
     {
         module: 'MMM-Lunartic',
-        position: 'top_left',                       // Best in left or right regions
+        position: 'top_left',                   // Best in left, center, or right regions
         config: { 
-		image: "animation"                      // animation or static (picture)
+		image: "animation"                      // animation, current or static
 		distance: "miles",                      // miles or km
 		useHeader: false,                       // true if you want a header
 		header: "The Lunartic is in my head",   // Any text you want

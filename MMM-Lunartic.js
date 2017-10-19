@@ -8,11 +8,11 @@ Module.register("MMM-Lunartic", {
 
     // Module config defaults.
     defaults: {
-	image: "animation", // animation or static (picture)
-        useHeader: false, // true if you want a header      
+	image: "animation",           // animation, current or static
+        useHeader: false,         // true if you want a header      
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
-        distance: "miles", // miles or km
+        distance: "miles",        // miles or km
         animationSpeed: 3000,
         initialLoadDelay: 4250,
         retryDelay: 2500,
@@ -43,7 +43,7 @@ Module.register("MMM-Lunartic", {
         requiresVersion: "2.1.0",
 
         //  Set locale.
-        this.url = "http://api.burningsoul.in/moon";
+        this.url = "https://mykle.herokuapp.com/moon";
         this.Lunartic = {};
         this.scheduleUpdate();
     },
@@ -69,7 +69,7 @@ Module.register("MMM-Lunartic", {
 
         var Lunartic = this.Lunartic;
         var distance = this.config.distance; // miles or km
-	var image = this.config.image;       // animation or static
+	var image = this.config.image;           // animation, current or static
 
         var top = document.createElement("div");
         top.classList.add("list-row");
@@ -83,6 +83,12 @@ Module.register("MMM-Lunartic", {
 		img.src = "modules/MMM-Lunartic/pix/moon.gif";
 		pic.appendChild(img);
 		wrapper.appendChild(pic);
+		
+	} else if (this.config.image == "current") {	
+		img.src = "http://api.usno.navy.mil/imagery/moon.png?date=today&time=now";
+		pic.appendChild(img);
+		wrapper.appendChild(pic);
+		
 	} else {
 		img.src = "modules/MMM-Lunartic/pix/static.jpg";
 		pic.appendChild(img);
@@ -117,7 +123,7 @@ Module.register("MMM-Lunartic", {
         var dateTimeString = moment.unix(Lunartic.FM.UT).format("MMM DD, YYYY");
         nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
         //	console.log (Lunartic); // checking data
-        nextFullMoon.innerHTML = this.translate("The next full moon is ") + dateTimeString;
+        nextFullMoon.innerHTML = this.translate("Nearest full moon is ") + dateTimeString;
         wrapper.appendChild(nextFullMoon);
 
 

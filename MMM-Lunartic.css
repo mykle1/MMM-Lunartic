@@ -6,50 +6,41 @@
 
 .MMM-Lunartic .header {
   color: white;               /* Header color. Default is white. */
-  text-align: left;           /* Algin header text  */
 }
 
 .MMM-Lunartic .photo { 
-/*  display: none;              uncomment if you don't want animated image */           
+/*  display: none;              uncomment if you don't want an image */           
   width: 75%;                /* adjust size of moon picture */
   margin-left: 0px;          /* Precisely align moon picture with these */
   margin-right: 0px;
-  margin-top: -31px;
-  margin-bottom: -21px;
-  float: center;
+  margin-top: -21px;         /* -41px for current. -21px for animation or static. */
+  margin-bottom: -21px;      /* -51px for current. -21px for animation or static. */
 }
 
 .MMM-Lunartic .age {
   color: white;               /* Age color. Default is white. */
-  text-align: left;           /* Algin age text  */
 }
 
 .MMM-Lunartic .illumination {
   color: white;               /* illumination color. Default is white. */
-  text-align: left;           /* Align illumination text  */
 }
 
 .MMM-Lunartic .stage {
   color: white;               /* stage color. Default is white. */
-  text-align: left;            /* Align stage text  */
 }
 
 .MMM-Lunartic .DFCOE {
   color: white;               /* DFCOE color. Default is white. */
-  text-align: left;            /* Align DFCOE text  */
 }
 
 .MMM-Lunartic .DFS {
   color: white;               /* DFS color. Default is white. */
-  text-align: left;            /* Align DFS text  */
 }
 
 .MMM-Lunartic .nextFullMoon {
   color: white;               /* nextFullMoon color. Default is white. */
-  text-align: left;            /* Align nextFullMoon text  */
 }
 
 .MMM-Lunartic .nextNewMoon {
   color: white;               /* nextNewMoon color. Default is white. */
-  text-align: left;            /* Align nextNewMoon text  */
 }
