@@ -30,9 +30,11 @@ The moon will be animated. See picture below.
 
 ![](pix/moon.gif) * This can be hidden
 
-![](pix/11.JPG) * To show only this
+![](pix/11.JPG) * To show only this, or vice versa, showing just the image
 
 * Or, Updating minutely, an image of the actual appearance of the current moon
+
+![](pix/dd.JPG)
 
 * Annotated .css file included for aligning and coloring text and header.
 
@@ -40,7 +42,7 @@ The moon will be animated. See picture below.
 
 * `git clone https://github.com/mykle1/MMM-Lunartic` into the `~/MagicMirror/modules` directory.
 
-* No API key needed! No dependencies needed! No kidding!
+* No API key needed! (It's my API) No dependencies needed! No kidding!
 
 
 ## Config.js entry and options
@@ -49,12 +51,12 @@ The moon will be animated. See picture below.
         module: 'MMM-Lunartic',
         position: 'top_left',                   // Best in left, center, or right regions
         config: { 
-		image: "animation",                     // animation, current or static
-		distance: "miles",                      // miles or km
-		useHeader: false,                       // true if you want a header
-		header: "The Lunartic is in my head",   // Any text you want
-		maxWidth: "300px",
-		animationSpeed: 3000,                   // updated info fades in and out
+			image: "animation",                     // animation, current or static
+			distance: "miles",                      // miles or km
+			useHeader: false,                       // true if you want a header
+			header: "The Lunartic is in my head",   // Any text you want
+			maxWidth: "300px",
+			animationSpeed: 3000,                   // updated info fades in and out
         }
     },
 	
