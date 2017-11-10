@@ -8,7 +8,7 @@ Module.register("MMM-Lunartic", {
 
     // Module config defaults.
     defaults: {
-	image: "animation",           // animation, current or static
+	    image: "animation",       // animation, current, DayNight or static (phases image)
         useHeader: false,         // true if you want a header      
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
@@ -69,7 +69,7 @@ Module.register("MMM-Lunartic", {
 
         var Lunartic = this.Lunartic;
         var distance = this.config.distance; // miles or km
-	var image = this.config.image;           // animation, current or static
+	    var image = this.config.image;           // animation, current or static
 
         var top = document.createElement("div");
         top.classList.add("list-row");
@@ -86,6 +86,11 @@ Module.register("MMM-Lunartic", {
 		
 	} else if (this.config.image == "current") {	
 		img.src = "http://api.usno.navy.mil/imagery/moon.png?date=today&time=now";
+		pic.appendChild(img);
+		wrapper.appendChild(pic);
+		
+	} else if (this.config.image == "DayNight") {	
+		img.src = "http://api.usno.navy.mil/imagery/earth.png?date=today";
 		pic.appendChild(img);
 		wrapper.appendChild(pic);
 		
@@ -123,9 +128,15 @@ Module.register("MMM-Lunartic", {
         var dateTimeString = moment.unix(Lunartic.FM.UT).format("MMM DD, YYYY");
         nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
         //	console.log (Lunartic); // checking data
-        nextFullMoon.innerHTML = this.translate("Nearest full moon is ") + dateTimeString;
-        wrapper.appendChild(nextFullMoon);
-
+		
+		// Because next FM data doesn't occur till after the new moon
+		if (moment().unix() > moment(Lunartic.FM.UT).add(15, 'd')){
+			nextFullMoon.innerHTML = this.translate("The next full moon is ") + dateTimeString;
+			wrapper.appendChild(nextFullMoon);
+		} else {
+	        nextFullMoon.innerHTML = this.translate("The last full moon was ") + dateTimeString;
+			wrapper.appendChild(nextFullMoon);
+		}
 
         // Next new moon date
         var nextNewMoon = document.createElement("div");
@@ -152,9 +163,49 @@ Module.register("MMM-Lunartic", {
         // waxing, waning, etc..
         var stage = document.createElement("div");
         stage.classList.add("xsmall", "bright", "stage");
-        stage.innerHTML = this.translate("The moon is ") + this.translate(Lunartic.stage);
-        wrapper.appendChild(stage);
-
+		
+		if (Math.round(Lunartic.illumination) < 1 && Lunartic.stage == "waning") {
+			stage.innerHTML = this.translate("New Moon Phase");
+			wrapper.appendChild(stage);
+			
+		} else if (Math.round(Lunartic.illumination) < 1 && Lunartic.stage == "waxing") {
+			stage.innerHTML = this.translate("New Moon Phase");
+			wrapper.appendChild(stage);
+			
+		} else if (Math.round(Lunartic.illumination) > 1 && Math.round(Lunartic.illumination) < 50 && Lunartic.stage == "waxing") {
+			stage.innerHTML = this.translate("Waxing Crescent Moon");
+			wrapper.appendChild(stage);
+			
+		} else if (Math.round(Lunartic.illumination) == 50 && Lunartic.stage == "waxing") {
+			stage.innerHTML = this.translate("First Quarter Half Moon");
+			wrapper.appendChild(stage);
+			
+		} else if (Math.round(Lunartic.illumination) > 50 && Math.round(Lunartic.illumination) < 100 && Lunartic.stage == "waxing") {
+			stage.innerHTML = this.translate("Waxing Gibbous Moon");
+			wrapper.appendChild(stage);
+			
+		} else if (Math.round(Lunartic.illumination) == 100 && Lunartic.stage == "waxing") {
+			stage.innerHTML = this.translate("Full Moon");
+			wrapper.appendChild(stage);
+		
+		} else if (Math.round(Lunartic.illumination) == 100 && Lunartic.stage == "waning") {
+			stage.innerHTML = this.translate("Full Moon");
+			wrapper.appendChild(stage);
+			
+		} else if (Math.round(Lunartic.illumination) <= 100 && Math.round(Lunartic.illumination) > 50 && Lunartic.stage == "waning") {
+			stage.innerHTML = this.translate("Waning Gibbous Moon");
+			wrapper.appendChild(stage);
+		
+		} else if (Math.round(Lunartic.illumination) == 50 && Lunartic.stage == "waning") {
+			stage.innerHTML = this.translate("Third Quarter Half Moon");
+			wrapper.appendChild(stage);
+		
+		} else if (Math.round(Lunartic.illumination) < 50 && Math.round(Lunartic.illumination) >= 1 && Lunartic.stage == "waning") {
+			stage.innerHTML = this.translate("Waning Crescent Moon");
+			wrapper.appendChild(stage);
+			
+		}
+		
         return wrapper;
     },
 
