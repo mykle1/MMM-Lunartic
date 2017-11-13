@@ -31,7 +31,8 @@ Module.register("MMM-Lunartic", {
     getTranslations: function() {
         return {
             en: "translations/en.json",
-            fr: "translations/fr.json"
+            fr: "translations/fr.json",
+            de: "translations/de.json"
         };
     },
     
@@ -125,7 +126,11 @@ Module.register("MMM-Lunartic", {
 
         // Next full moon date
         var nextFullMoon = document.createElement("div");
-        var dateTimeString = moment.unix(Lunartic.FM.UT).format("MMM DD, YYYY");
+        if (config.language == "de") {
+        	var dateTimeString = moment.unix(Lunartic.FM.UT).format("DD MMM YYYY");
+	}else {
+        	var dateTimeString = moment.unix(Lunartic.FM.UT).format("MMM DD, YYYY");
+	}
         nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
         //	console.log (Lunartic); // checking data
 		
@@ -140,7 +145,11 @@ Module.register("MMM-Lunartic", {
 
         // Next new moon date
         var nextNewMoon = document.createElement("div");
-        var dateTimeString = moment.unix(Lunartic.NNM.UT).format("MMM DD, YYYY");
+        if (config.language == "de") {
+        	var dateTimeString = moment.unix(Lunartic.NNM.UT).format("DD MMM YYYY");
+	}else {
+        	var dateTimeString = moment.unix(Lunartic.NNM.UT).format("MMM DD, YYYY");
+	}
         nextNewMoon.classList.add("xsmall", "bright", "nextNewMoon");
         nextNewMoon.innerHTML = this.translate("The next new moon is ") + dateTimeString;
         wrapper.appendChild(nextNewMoon);
