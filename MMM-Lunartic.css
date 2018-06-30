@@ -39,12 +39,15 @@
 
 .MMM-Lunartic .DFS {
   color: white;               /* DFS color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
 
 .MMM-Lunartic .nextFullMoon {
   color: white;               /* nextFullMoon color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
 
 .MMM-Lunartic .nextNewMoon {
   color: white;               /* nextNewMoon color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
