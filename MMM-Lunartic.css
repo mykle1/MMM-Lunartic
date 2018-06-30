@@ -19,18 +19,22 @@
 
 .MMM-Lunartic .age {
   color: white;               /* Age color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
 
 .MMM-Lunartic .illumination {
   color: white;               /* illumination color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
 
 .MMM-Lunartic .stage {
   color: white;               /* stage color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
 
 .MMM-Lunartic .DFCOE {
   color: white;               /* DFCOE color. Default is white. */
+  /*  display: none; */       /* uncomment if you don't want this */
 }
 
 .MMM-Lunartic .DFS {
