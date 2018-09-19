@@ -36,6 +36,10 @@ The moon will be animated. See picture below.
 
 ![](pix/dd.JPG)
 
+* Now an option for rotating data to conserve mirror real estate
+
+![](pix/rotating.gif)
+
 * Annotated .css file included for aligning and coloring text and header.
 
 ## Installation
@@ -48,17 +52,20 @@ The moon will be animated. See picture below.
 ## Config.js entry and options
 
     {
-        module: 'MMM-Lunartic',
-        position: 'top_left',                   // Best in left, center, or right regions
-        config: { 
-			image: "animation",                     // animation, current, DayNight or static
-			distance: "miles",                      // miles or km
-			useHeader: false,                       // true if you want a header
-			header: "The Lunartic is in my head",   // Any text you want
-			maxWidth: "300px",
-			animationSpeed: 3000,                   // updated info fades in and out
-        }
-    },
+            disabled: false,
+            module: 'MMM-Lunartic',
+            position: 'bottom_center', // Best in left, center, or right regions
+            config: {
+                mode: "rotating", // rotating or static
+                image: "current", // animation, current, DayNight or static
+                distance: "miles", // miles or km
+                useHeader: false, // true if you want a header
+                header: "The Lunartic is in my head", // Any text you want
+                maxWidth: "300px",
+                animationSpeed: 0,
+                rotateInterval: 15000,
+            }
+        },
 	
 
 ## Special thanks to SpaceCowboysDude for spotting my errors, as usual.
