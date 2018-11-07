@@ -59,6 +59,7 @@ The moon will be animated. See picture below.
                 mode: "rotating", // rotating or static
                 image: "current", // animation, current, DayNight or static
                 distance: "miles", // miles or km
+		sounds: "yes", // howling wolf, only on a full moon
                 useHeader: false, // true if you want a header
                 header: "The Lunartic is in my head", // Any text you want
                 maxWidth: "300px",
