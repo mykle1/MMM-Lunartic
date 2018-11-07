@@ -160,8 +160,8 @@ Module.register("MMM-Lunartic", {
                     // var nowDate = new Date();
                     // dataDate = new Date(this.info[2].fm);
 
-                    console.log(this.info[2].fm); // unix timestamp of full moon from data
-                    console.log(moment().valueOf()); // unix timestamp for right now
+                    //console.log(this.info[2].fm); // unix timestamp of full moon from data
+                    //console.log(moment().valueOf()); // unix timestamp for right now
 
                     // compare date of next full moon to current date and time
                     if (this.info[2].fm < moment().valueOf()) {
