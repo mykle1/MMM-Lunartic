@@ -14,10 +14,11 @@ Module.register("MMM-Lunartic", {
         header: "The Lunartic is in my head", // Any text you want. useHeader must be true
         maxWidth: "300px",
         distance: "miles", // miles or km
+        sounds: "no", // for wolf howls, only on a full moon
         animationSpeed: 0,
         initialLoadDelay: 4250,
         retryDelay: 2500,
-        updateInterval: 15 * 60 * 1000, // 15 minutes
+        updateInterval: 3 * 60 * 1000, // 15 minutes
         rotateInterval: 30 * 1000,
 
     },
@@ -144,7 +145,7 @@ Module.register("MMM-Lunartic", {
                     wrapper.appendChild(DFS);
                 }
 
-                if (this.activeItem === 2) {
+                if (this.activeItem == 2) {
                     // Next full moon date
                     var nextFullMoon = document.createElement("div");
                     if (config.language == "de") {
@@ -154,11 +155,26 @@ Module.register("MMM-Lunartic", {
                     }
                     nextFullMoon.classList.add("xsmall", "bright", "nextFullMoon");
                     //	console.log (Lunartic); // checking data
+
+                    // compare date of next full moon to current date and time
+                    // var nowDate = new Date();
+                    // dataDate = new Date(this.info[2].fm);
+
+                    console.log(this.info[2].fm); // unix timestamp of full moon from data
+                    console.log(moment().valueOf()); // unix timestamp for right now
+
+                    // compare date of next full moon to current date and time
+                    if (this.info[2].fm < moment().valueOf()) {
+                    nextFullMoon.innerHTML = this.translate("The last full moon was ") + dateTimeString;
+                    wrapper.appendChild(nextFullMoon);
+                  } else {
                     nextFullMoon.innerHTML = this.translate("The next full moon is ") + dateTimeString;
                     wrapper.appendChild(nextFullMoon);
-                }
+              }
 
-                if (this.activeItem === 3) {
+          }
+
+                if (this.activeItem == 3) {
                     // Next new moon date
                     var nextNewMoon = document.createElement("div");
                     if (config.language == "de") {
@@ -171,7 +187,7 @@ Module.register("MMM-Lunartic", {
                     wrapper.appendChild(nextNewMoon);
                 }
 
-                if (this.activeItem === 4) {
+                if (this.activeItem == 4) {
                     // how old the current moon is
                     var age = document.createElement("div");
                     age.classList.add("xsmall", "bright", "age");
@@ -179,7 +195,7 @@ Module.register("MMM-Lunartic", {
                     wrapper.appendChild(age);
                 }
 
-                if (this.activeItem === 5) {
+                if (this.activeItem == 5) {
                     // how much of the moon is illuminated
                     var illumination = document.createElement("div");
                     illumination.classList.add("xsmall", "bright", "illumination");
@@ -187,7 +203,7 @@ Module.register("MMM-Lunartic", {
                     wrapper.appendChild(illumination);
                 }
 
-                if (this.activeItem === 6) {
+                if (this.activeItem == 6) {
                     // waxing, waning, etc..
                     var stage = document.createElement("div");
                     stage.classList.add("xsmall", "bright", "stage");
@@ -216,9 +232,25 @@ Module.register("MMM-Lunartic", {
                         stage.innerHTML = this.translate("Full Moon");
                         wrapper.appendChild(stage);
 
+                      // create audio, only on full moon, wolf howling
+             			 if (this.config.sounds == "yes") {
+             					var sound = new Audio();
+             					sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+             					sound.loop = false;
+             					sound.play();
+             			  }
+
                     } else if (Math.round(this.info[5].ill) == 100 && this.info[6].stage == "waning") {
                         stage.innerHTML = this.translate("Full Moon");
                         wrapper.appendChild(stage);
+
+                        // create audio, only on full moon, wolf howling
+               			 if (this.config.sounds == "yes") {
+               					var sound = new Audio();
+               					sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+               					sound.loop = false;
+               					sound.play();
+               			  }
 
                     } else if (Math.round(this.info[5].ill) <= 100 && Math.round(this.info[5].ill) > 50 && this.info[6].stage == "waning") {
                         stage.innerHTML = this.translate("Waning Gibbous Moon");
@@ -232,6 +264,9 @@ Module.register("MMM-Lunartic", {
                         stage.innerHTML = this.translate("Waning Crescent Moon");
                         wrapper.appendChild(stage);
 
+                    }  else if (Math.round(this.info[5].ill) < 1) {
+                        stage.innerHTML = this.translate("No visible moon");
+                        wrapper.appendChild(stage);
                     }
                 }
 
@@ -276,11 +311,11 @@ Module.register("MMM-Lunartic", {
 
 
             // Because next FM data doesn't occur till after the new moon
-            if (moment().unix() > moment(this.info[2].fm).add(15, 'd')) {
-                nextFullMoon.innerHTML = this.translate("The next full moon is ") + dateTimeString;
+            if (this.info[2].fm < moment().valueOf()) {
+                nextFullMoon.innerHTML = this.translate("The last full moon was ") + dateTimeString;
                 wrapper.appendChild(nextFullMoon);
             } else {
-                nextFullMoon.innerHTML = this.translate("The last full moon was ") + dateTimeString;
+                nextFullMoon.innerHTML = this.translate("The next full moon is ") + dateTimeString;
                 wrapper.appendChild(nextFullMoon);
             }
 
@@ -339,9 +374,25 @@ Module.register("MMM-Lunartic", {
                 stage.innerHTML = this.translate("Full Moon");
                 wrapper.appendChild(stage);
 
+                // create audio, only on full moon, wolf howling
+             if (this.config.sounds == "yes") {
+                var sound = new Audio();
+                sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+                sound.loop = false;
+                sound.play();
+              }
+
             } else if (Math.round(this.info[5].ill) == 100 && this.info[6].stage == "waning") {
                 stage.innerHTML = this.translate("Full Moon");
                 wrapper.appendChild(stage);
+
+                // create audio, only on full moon, wolf howling
+             if (this.config.sounds == "yes") {
+                var sound = new Audio();
+                sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+                sound.loop = false;
+                sound.play();
+              }
 
             } else if (Math.round(this.info[5].ill) <= 100 && Math.round(this.info[5].ill) > 50 && this.info[6].stage == "waning") {
                 stage.innerHTML = this.translate("Waning Gibbous Moon");
@@ -354,7 +405,10 @@ Module.register("MMM-Lunartic", {
             } else if (Math.round(this.info[5].ill) < 50 && Math.round(this.info[5].ill) >= 1 && this.info[6].stage == "waning") {
                 stage.innerHTML = this.translate("Waning Crescent Moon");
                 wrapper.appendChild(stage);
-
+                
+            }  else if (Math.round(this.info[5].ill) < 1) {
+                stage.innerHTML = this.translate("No visible moon");
+                wrapper.appendChild(stage);
             }
 
         } // end of static mode
@@ -380,7 +434,7 @@ Module.register("MMM-Lunartic", {
 
     processLunartic: function(data) {
         this.info = data;
-        // console.log(this.info); // for checking
+  //   console.log(this.info); // for checking
         this.loaded = true;
     },
 
