@@ -160,11 +160,11 @@ Module.register("MMM-Lunartic", {
                     // var nowDate = new Date();
                     // dataDate = new Date(this.info[2].fm);
 
-                    //console.log(this.info[2].fm); // unix timestamp of full moon from data
-                    //console.log(moment().valueOf()); // unix timestamp for right now
+                    console.log(this.info[2].fm * 1000); // unix timestamp of full moon from data
+                    console.log(new Date().valueOf()); // unix timestamp for right now
 
                     // compare date of next full moon to current date and time
-                    if (this.info[2].fm < moment().valueOf()) {
+                    if (this.info[2].fm * 1000 < new Date().valueOf()) {
                     nextFullMoon.innerHTML = this.translate("The last full moon was ") + dateTimeString;
                     wrapper.appendChild(nextFullMoon);
                   } else {
@@ -209,11 +209,11 @@ Module.register("MMM-Lunartic", {
                     stage.classList.add("xsmall", "bright", "stage");
 
                     if (Math.round(this.info[5].ill) < 1 && this.info[6] == "waning") {
-                        stage.innerHTML = this.translate("New Moon Phase");
+                        stage.innerHTML = this.translate("New Moon - No visible moon");
                         wrapper.appendChild(stage);
 
                     } else if (Math.round(this.info[5].ill) < 1 && this.info[6].stage == "waxing") {
-                        stage.innerHTML = this.translate("New Moon Phase");
+                        stage.innerHTML = this.translate("New Moon - No visible moon");
                         wrapper.appendChild(stage);
 
                     } else if (Math.round(this.info[5].ill) > 1 && Math.round(this.info[5].ill) < 50 && this.info[6].stage == "waxing") {
@@ -265,7 +265,7 @@ Module.register("MMM-Lunartic", {
                         wrapper.appendChild(stage);
 
                     }  else if (Math.round(this.info[5].ill) < 1) {
-                        stage.innerHTML = this.translate("No visible moon");
+                        stage.innerHTML = this.translate("New Moon - No visible moon");
                         wrapper.appendChild(stage);
                     }
                 }
@@ -311,7 +311,7 @@ Module.register("MMM-Lunartic", {
 
 
             // Because next FM data doesn't occur till after the new moon
-            if (this.info[2].fm < moment().valueOf()) {
+            if (this.info[2].fm * 1000 < new Date().valueOf()) {
                 nextFullMoon.innerHTML = this.translate("The last full moon was ") + dateTimeString;
                 wrapper.appendChild(nextFullMoon);
             } else {
@@ -351,11 +351,11 @@ Module.register("MMM-Lunartic", {
                 stage.classList.add("xsmall", "bright", "stage");
 
             if (Math.round(this.info[5].ill) < 1 && Lunartic.stage == "waning") {
-                stage.innerHTML = this.translate("New Moon Phase");
+                stage.innerHTML = this.translate("New Moon - No visible moon");
                 wrapper.appendChild(stage);
 
             } else if (Math.round(this.info[5].ill) < 1 && this.info[6].stage == "waxing") {
-                stage.innerHTML = this.translate("New Moon Phase");
+                stage.innerHTML = this.translate("New Moon - No visible moon");
                 wrapper.appendChild(stage);
 
             } else if (Math.round(this.info[5].ill) > 1 && Math.round(this.info[5].ill) < 50 && this.info[6].stage == "waxing") {
@@ -405,9 +405,9 @@ Module.register("MMM-Lunartic", {
             } else if (Math.round(this.info[5].ill) < 50 && Math.round(this.info[5].ill) >= 1 && this.info[6].stage == "waning") {
                 stage.innerHTML = this.translate("Waning Crescent Moon");
                 wrapper.appendChild(stage);
-                
+
             }  else if (Math.round(this.info[5].ill) < 1) {
-                stage.innerHTML = this.translate("No visible moon");
+                stage.innerHTML = this.translate("New Moon - No visible moon");
                 wrapper.appendChild(stage);
             }
 
