@@ -8,13 +8,13 @@
   color: white;               /* Header color. Default is white. */
 }
 
-.MMM-Lunartic .photo { 
-/*  display: none;              uncomment if you don't want an image */           
-  width: 75%;                /* adjust size of moon picture */
+.MMM-Lunartic img.photo {
+/*  display: none;              uncomment if you don't want an image */
+  max-width: 50%;
   margin-left: 0px;          /* Precisely align moon picture with these */
   margin-right: 0px;
-  margin-top: -21px;         /* -41px for current. -21px for animation or static. */
-  margin-bottom: -21px;      /* -51px for current. -21px for animation or static. */
+  margin-top: 0px;         /* -41px for current. -21px for animation or static. */
+  margin-bottom: -51px;      /* -51px for current. -21px for animation or static. */
 }
 
 .MMM-Lunartic .age {
