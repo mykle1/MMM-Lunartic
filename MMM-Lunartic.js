@@ -1395,7 +1395,7 @@ if (Math.round(this.info[5].ill) < 1 && this.info[6] == "waning") {
                 if (this.activeItem == 2) {
                     // Next full moon date
                     var nextFullMoon = document.createElement("div");
-                    if (config.language == "de") {
+                    if (config.language == "de" || config.language == "fr") {
                         var dateTimeString = moment.unix(this.info[2].fm).format("DD MMM YYYY");
                     } else {
                         var dateTimeString = moment.unix(this.info[2].fm).format("MMM DD, YYYY");
@@ -1420,7 +1420,7 @@ if (Math.round(this.info[5].ill) < 1 && this.info[6] == "waning") {
                 if (this.activeItem == 3) {
                     // Next new moon date
                     var nextNewMoon = document.createElement("div");
-                    if (config.language == "de") {
+                    if (config.language == "de" || config.language == "fr") {
                         var dateTimeString = moment.unix(this.info[3].nnm).format("DD MMM YYYY");
                     } else {
                         var dateTimeString = moment.unix(this.info[3].nnm).format("MMM DD, YYYY");
@@ -1544,7 +1544,7 @@ if (Math.round(this.info[5].ill) < 1 && this.info[6] == "waning") {
 
             // Next full moon date
             var nextFullMoon = document.createElement("div");
-            if (config.language == "de") {
+            if (config.language == "de" || config.language == "fr") {
                 var dateTimeString = moment.unix(this.info[2].fm).format("DD MMM YYYY");
             } else {
                 var dateTimeString = moment.unix(this.info[2].fm).format("MMM DD, YYYY");
@@ -1565,7 +1565,7 @@ if (Math.round(this.info[5].ill) < 1 && this.info[6] == "waning") {
 
             // Next new moon date
             var nextNewMoon = document.createElement("div");
-            if (config.language == "de") {
+            if (config.language == "de" || config.language == "fr") {
                 var dateTimeString = moment.unix(this.info[3].nnm).format("DD MMM YYYY");
             } else {
                 var dateTimeString = moment.unix(this.info[3].nnm).format("MMM DD, YYYY");
