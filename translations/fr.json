@@ -18,5 +18,14 @@
 "new": "nouvelle",
 "waxing crescent":"croissante",
 "first quarter":"premier quartier",
-"When the Moon hits your eye . . .": "Quand la lune frappe votre œil. . ."
+"When the Moon hits your eye . . .": "Quand la lune frappe votre œil. . .",
+"The last full moon was ": "Dernière pleine lune: ",
+"New Moon Phase": "Nouvelle phase de lune",
+"Waxing Crescent Moon": "Croissant de lune montant",
+"First Quarter Half Moon": "Premier quart demi-lune",
+"Waxing Gibbous Moon": "Lune gibbeuse montante",
+"Full Moon": "Pleine lune",
+"Waning Gibbous Moon": "Lune gibbeuse descendante",
+"Third Quarter Half Moon": "Troisième quart demi-lune",
+"Waning Crescent Moon": "Croissant de lune descendant"
 }
