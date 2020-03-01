@@ -33,11 +33,14 @@ Module.register("MMM-Lunartic", {
 
     getTranslations: function() {
         return {
+            ca: "translations/ca.json",
+            gl: "translations/gl.json",
             en: "translations/en.json",
             fr: "translations/fr.json",
             es: "translations/es.json",
             de: "translations/de.json",
             sv: "translations/sv.json",
+            ro: "translations/ro.json",
             nl: "translations/nl.json"
         };
     },
