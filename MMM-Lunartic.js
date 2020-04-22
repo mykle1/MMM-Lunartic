@@ -33,8 +33,6 @@ Module.register("MMM-Lunartic", {
 
     getTranslations: function() {
         return {
-            ca: "translations/ca.json",
-            gl: "translations/gl.json",
             en: "translations/en.json",
             fr: "translations/fr.json",
             es: "translations/es.json",
@@ -42,7 +40,9 @@ Module.register("MMM-Lunartic", {
             sv: "translations/sv.json",
             ro: "translations/ro.json",
             it: "translations/it.json",
-            nl: "translations/nl.json"
+            nl: "translations/nl.json",
+            ca: "translations/ca.json",
+            gl: "translations/gl.json"
         };
     },
 
@@ -94,7 +94,7 @@ Module.register("MMM-Lunartic", {
 
 ///////////////////////// Temporary till API is fixed ///////////////////// Start
 
-          if (Math.round(this.info[5].ill) < 1 && this.info[6] == "waning") {
+          if (Math.round(this.info[5].ill) < 1 && this.info[6].stage == "waning") {
              img.src = "modules/MMM-Lunartic/pix/nm.png"; // ("New Moon");
              pic.appendChild(img);
              wrapper.appendChild(pic);
