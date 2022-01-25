@@ -46,7 +46,9 @@ The moon will be animated. See picture below.
 
 * `git clone https://github.com/mykle1/MMM-Lunartic` into the `~/MagicMirror/modules` directory.
 
-* No API key needed! (It's my API) No dependencies needed! No kidding!
+* cd into the MMM-Lunartic folder nd run npm install
+
+* No API key needed! (It's my API) No kidding!
 
 
 ## Config.js entry and options
