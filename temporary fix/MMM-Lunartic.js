@@ -1,4 +1,4 @@
-/* Magic Mirror
+/* MagicMirror²
  * Module: MMM-Lunartic
  *
  * By Mykle1
@@ -68,7 +68,7 @@ Module.register("MMM-Lunartic", {
         wrapper.style.maxWidth = this.config.maxWidth;
 
         if (!this.loaded) {
-            wrapper.innerHTML = this.translate("When the Moon hits your eye . . .");
+            wrapper.innerHTML = this.translate("When the Moon hits your eye …");
             wrapper.classList.add("bright", "light", "small");
             return wrapper;
         }

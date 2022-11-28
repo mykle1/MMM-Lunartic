@@ -1,6 +1,6 @@
-## MMM-Lunartic
+# MMM-Lunartic
 
-Up to the minute information about our Lunar partner, with a splash of EyeCandy, to boot!
+MMM-Lunartic is a module for [MagicMirror²](https://github.com/MichMich/MagicMirror) to display up to the minute information about our Lunar partner. With a splash of EyeCandy, to boot!
 
 ## How it works
 
@@ -16,9 +16,9 @@ Then you are offered updated information every minute, such as:
 * This distance of the moon to the sun at this moment. (Changes minutely)
 * The date of the next full moon. (Very important if you're a werewolf!)
 * The date of the next new moon. (Also very important if you're a werewolf!)
-* The age of the current moon's monthly phase. 
+* The age of the current moon's monthly phase.
 * Percentage of the current moon that is illuminated.
-* The stage of the present moon (waning, waxing, etc..) 
+* The stage of the present moon (waning, waxing, etc..)
 
 ## Examples
 
@@ -45,30 +45,30 @@ The moon will be animated. See picture below.
 ## Installation
 
 * `git clone https://github.com/mykle1/MMM-Lunartic` into the `~/MagicMirror/modules` directory.
-
-* cd into the MMM-Lunartic folder and run npm install
-
+* cd into the MMM-Lunartic folder and run `npm install`
 * No API key needed! (It's my API) No kidding!
 
+## config.js entry and options
 
-## Config.js entry and options
-
+```js
     {
-            disabled: false,
-            module: 'MMM-Lunartic',
-            position: 'bottom_center', // Best in left, center, or right regions
+            module: "MMM-Lunartic",
+            position: "bottom_center", // Best in left, center, or right regions
             config: {
-                mode: "rotating", // rotating or static
-                image: "current", // animation, current, DayNight or static
-                distance: "miles", // miles or km
-		    sounds: "yes", // howling wolf, only on a full moon
-                useHeader: false, // true if you want a header
+                mode: "rotating",      // rotating or static
+                image: "current",      // animation, current, DayNight or static
+                distance: "miles",     // miles or km
+                sounds: "yes",         // howling wolf, only on a full moon
+                useHeader: false,      // true if you want a header
                 header: "The Lunartic is in my head", // Any text you want
                 maxWidth: "300px",
                 animationSpeed: 0,
                 rotateInterval: 15000,
             }
         },
-	
+```
 
-## Special thanks to SpaceCowboysDude for spotting my errors, as usual.
+## Special Thanks
+
+* [Michael Teeuw](https://github.com/MichMich) for creating the inspiring project [MagicMirror²](https://github.com/MichMich/MagicMirror).
+* [John Wade](https://github.com/cowboysdude) for spotting my errors, as usual.

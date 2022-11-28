@@ -4,8 +4,8 @@
  * By Mykle1
  *
  */
-const NodeHelper = require('node_helper');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const NodeHelper = require("node_helper");
+const fetch = (...args) => import("node-fetch").then(({default: fetch}) => fetch(...args));
 
 module.exports = NodeHelper.create({
 
@@ -42,13 +42,13 @@ module.exports = NodeHelper.create({
 
                 data.push(dfcoe,dfs,fm,nnm,age,ill,stage); // push the data
 //               console.log(response.statusCode + data); // for checking
-                this.sendSocketNotification('LUNARTIC_RESULT', data);
+                this.sendSocketNotification("LUNARTIC_RESULT", data);
         });
     },
 
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === 'GET_LUNARTIC') {
+        if (notification === "GET_LUNARTIC") {
             this.getLunartic(payload);
         }
     }

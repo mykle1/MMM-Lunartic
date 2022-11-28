@@ -1,4 +1,4 @@
-/* Magic Mirror
+/* MagicMirror²
  * Module: MMM-Lunartic
  *
  * By Mykle1
@@ -20,7 +20,6 @@ Module.register("MMM-Lunartic", {
         retryDelay: 2500,
         updateInterval: 3 * 60 * 1000, // 15 minutes
         rotateInterval: 30 * 1000,
-
     },
 
     getStyles: function() {
@@ -61,15 +60,13 @@ Module.register("MMM-Lunartic", {
     },
 
 
-
     getDom: function() {
-
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper";
         wrapper.style.maxWidth = this.config.maxWidth;
 
         if (!this.loaded) {
-            wrapper.innerHTML = this.translate("When the Moon hits your eye . . .");
+            wrapper.innerHTML = this.translate("When the Moon hits your eye …");
             wrapper.classList.add("bright", "light", "small");
             return wrapper;
         }
@@ -1476,7 +1473,7 @@ console.log(img.src);
                       // create audio, only on full moon, wolf howling
              			 if (this.config.sounds == "yes") {
              					var sound = new Audio();
-             					sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+             					sound.src = "modules/MMM-Lunartic/sounds/wolf.mp3";
              					sound.loop = false;
              					sound.play();
              			  }
@@ -1488,7 +1485,7 @@ console.log(img.src);
                         // create audio, only on full moon, wolf howling
                			 if (this.config.sounds == "yes") {
                					var sound = new Audio();
-               					sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+               					sound.src = "modules/MMM-Lunartic/sounds/wolf.mp3";
                					sound.loop = false;
                					sound.play();
                			  }
@@ -1618,7 +1615,7 @@ console.log(img.src);
                 // create audio, only on full moon, wolf howling
              if (this.config.sounds == "yes") {
                 var sound = new Audio();
-                sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+                sound.src = "modules/MMM-Lunartic/sounds/wolf.mp3";
                 sound.loop = false;
                 sound.play();
               }
@@ -1630,7 +1627,7 @@ console.log(img.src);
                 // create audio, only on full moon, wolf howling
              if (this.config.sounds == "yes") {
                 var sound = new Audio();
-                sound.src = 'modules/MMM-Lunartic/sounds/wolf.mp3';
+                sound.src = "modules/MMM-Lunartic/sounds/wolf.mp3";
                 sound.loop = false;
                 sound.play();
               }
@@ -1678,10 +1675,10 @@ console.log(img.src);
     /////  Add this function to the modules you want to control with voice //////
 
     notificationReceived: function(notification, payload) {
-        if (notification === 'HIDE_MOON') {
+        if (notification === "HIDE_MOON") {
             this.hide(1000);
             //    this.updateDom(300);
-        } else if (notification === 'SHOW_MOON') {
+        } else if (notification === "SHOW_MOON") {
             this.show(1000);
             //   this.updateDom(300);
         }
@@ -1719,8 +1716,8 @@ console.log(img.src);
     },
 
     getLunartic: function() {
-        this.sendSocketNotification('GET_LUNARTIC'); // , this.url);
-        this.sendSocketNotification('GET_MOON', this.url);
+        this.sendSocketNotification("GET_LUNARTIC"); // , this.url);
+        this.sendSocketNotification("GET_MOON", this.url);
     },
 
     socketNotificationReceived: function(notification, payload) {
