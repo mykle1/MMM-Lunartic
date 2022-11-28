@@ -1,12 +1,11 @@
-/* Magic Mirror
+/* MagicMirror²
  * Module: MMM-Lunartic
  *
  * By Mykle1
  *
  */
 const NodeHelper = require('node_helper');
-const request = require('request');
-
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 module.exports = NodeHelper.create({
 
@@ -16,26 +15,21 @@ module.exports = NodeHelper.create({
 
 
     getLunartic: function(url) {
-        var self = this;
-        var data =[];
-        request({
-            url: "https://mykle.herokuapp.com/moon",
-            method: 'GET'
-        }, (error, response, body) => {
-            if (!error && response.statusCode == 200) {
-                var info = JSON.parse(body);
-//                console.log(info); // for checking
+        fetch("https://mykle.herokuapp.com/moon")
+            .then(response => response.json())
+            .then(json => {
+//                console.log(json); // for checking
 
                 // create array
                 var data = [];
                 // set vars
-                var dfcoe  =  info.DFCOE ;
-                var dfs  =  info.DFS;
-                var fm  = info.FM.UT;
-                var nnm  = info.NNM.UT;
-                var age  = info.age;
-                var ill  = info.illumination;
-                var stage  = info.stage;
+                var dfcoe  =  json.DFCOE ;
+                var dfs  =  json.DFS;
+                var fm  = json.FM.UT;
+                var nnm  = json.NNM.UT;
+                var age  = json.age;
+                var ill  = json.illumination;
+                var stage  = json.stage;
 
                 // Make each into an object so they can be put into a rotation courtesy of @cowboysdude
                 dfcoe  =  {dfcoe};
@@ -49,7 +43,6 @@ module.exports = NodeHelper.create({
                 data.push(dfcoe,dfs,fm,nnm,age,ill,stage); // push the data
 //               console.log(response.statusCode + data); // for checking
                 this.sendSocketNotification('LUNARTIC_RESULT', data);
-            }
         });
     },
 
